@@ -5,11 +5,11 @@ import lombok.Data;
 @Data
 public class Sim {
 
-    String msisdn;
+    String phoneNumber;
     String imsi;
 
-    public Sim(String msisdn, String imsi){
-        this.msisdn = msisdn;
+    public Sim(String phoneNumber, String imsi){
+        this.phoneNumber = phoneNumber;
         this.imsi = imsi;
     }
 
