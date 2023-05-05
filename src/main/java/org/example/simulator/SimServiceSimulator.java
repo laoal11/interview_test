@@ -13,7 +13,7 @@ import java.util.Random;
 @RestController
 public class SimServiceSimulator {
 
-    @GetMapping("/sims")
+    @GetMapping("/getSimCards")
     ResponseEntity<List<Sim>> retrieveSims(String url, Class<?> responseType) throws Exception {
         Random random = new Random();
         int num = random.nextInt(4 - 1 + 1) + 1;

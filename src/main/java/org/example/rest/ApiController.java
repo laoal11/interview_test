@@ -19,7 +19,7 @@ public class ApiController {
 
     @GetMapping("sims")
     public List<Sim> retrieveSimCards(){
-        return restTemplate.getForObject(baseUrl + "/sims", List.class);
+        return restTemplate.getForObject(baseUrl + "/getSimCards", List.class);
     }
 
     @GetMapping("deleteAllSims")
