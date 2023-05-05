@@ -1,9 +1,9 @@
 package org.example.simulator;
 
 import org.example.model.Sim;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,16 +14,24 @@ import java.util.Random;
 public class SimServiceSimulator {
 
     @GetMapping("/sims")
-    List<Sim> getForObject(String url, Class<?> responseType) throws Exception {
+    ResponseEntity<List<Sim>> retrieveSims(String url, Class<?> responseType) throws Exception {
         Random random = new Random();
-        int num = random.nextInt(3 - 1 + 1) + 1;
+        int num = random.nextInt(4 - 1 + 1) + 1;
         switch (num){
             case 1:
-                return Arrays.asList(new Sim("491512364", "262019876542210"));
+                return new ResponseEntity<>(Arrays.asList(new Sim("491512364", "262019876542210")), HttpStatus.OK);
             case 2:
-                return Arrays.asList(new Sim("491512364", "262019876542210"), new Sim("491512364","262019876542210"));
+                return new ResponseEntity<>(Arrays.asList(new Sim("491512364", "262019876542210"), new Sim("491512364","262019876542210")), HttpStatus.OK);
+            case 3:
+                return new ResponseEntity<>(Arrays.asList(new Sim("491512", "262019876542245"), new Sim("491512365","262019876543210"), new Sim("491512365","262019876543210"),new Sim("491512", "262019876542245")), HttpStatus.OK);
             default:
-                return Arrays.asList(new Sim("491512", "262019876542245"), new Sim("491512365","262019876543210"), new Sim("491512365","262019876543210"),new Sim("491512", "262019876542245"));
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @DeleteMapping("/user/{user}")
+    public void deleteAlLSims(@RequestParam("user") String user) throws Exception{
+        System.out.println("USER: " + user);
+    }
+
 }
