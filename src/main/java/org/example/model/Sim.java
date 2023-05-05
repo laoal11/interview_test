@@ -13,4 +13,15 @@ public class Sim {
         this.imsi = imsi;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        Sim sim2 = (Sim) obj;
+        if(this.msisdn.equals(sim2.msisdn)){
+            if(this.imsi.equals(sim2.msisdn)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
