@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class Sim {
 
-    final String msisdn;
-    final String imsi;
+    String msisdn;
+    String imsi;
 
     public Sim(String msisdn, String imsi){
         this.msisdn = msisdn;
